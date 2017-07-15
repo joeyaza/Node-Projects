@@ -5,7 +5,7 @@ block content
   p Welcome to #{title}
   form(method="post", action="/", enttype="multipart/form-data")
     label GO AHEAD
-    input.form-control(name="numeric", type="text")
+    input.form-control(name="numeric", type="text", value=sesh )
     input.btn.btn-default(name='submit', type='submit', value='Submit')
   h2=error
   h1= output
