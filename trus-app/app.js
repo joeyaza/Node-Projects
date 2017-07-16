@@ -29,7 +29,7 @@ app.get('/', function(req, res, next) {
 	res.render('index', { title: 'Trussle' });
 });
 
-app.testLogic = function(in) {
+app.testLogic = function(inp) {
     const anum={
     1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'e', 6: 'f', 7: 'g', 8: 'h',
     9: 'i', 10: 'j', 11: 'k', 
@@ -37,7 +37,7 @@ app.testLogic = function(in) {
     21: 'u', 22: 'v', 23: 'w', 24: 'x', 25: 'y', 26: 'z'}
     let y = [];
     let z = [];
-    var x = in.split(' ').map(Number);
+    var x = inp.split(' ').map(Number);
     for (i = 0; i < x.length; i++) {
       if (x[i] < 26) {
         y.push(x[i]);
