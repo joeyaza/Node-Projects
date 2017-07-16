@@ -24,10 +24,36 @@ app.use(session({secret:'SECRET27265378TOKEN'}));
 /* GET home page. */
 app.get('/', function(req, res, next) {
 	if (req.session.numeric) {
-  res.render('index', { title: 'TRUS', sesh: req.session.numeric  });
+  res.render('index', { title: 'Trussle', sesh: req.session.numeric  });
 } else 
-	res.render('index', { title: 'TRUS' });
+	res.render('index', { title: 'Trussle' });
 });
+
+app.testLogic = function(in) {
+    const anum={
+    1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'e', 6: 'f', 7: 'g', 8: 'h',
+    9: 'i', 10: 'j', 11: 'k', 
+    12: 'l', 13: 'm', 14: 'n',15: 'o', 16: 'p', 17: 'q', 18: 'r', 19: 's', 20: 't', 
+    21: 'u', 22: 'v', 23: 'w', 24: 'x', 25: 'y', 26: 'z'}
+    let y = [];
+    let z = [];
+    var x = in.split(' ').map(Number);
+    for (i = 0; i < x.length; i++) {
+      if (x[i] < 26) {
+        y.push(x[i]);
+      } else {
+        while (x[i] > 26) {
+          x[i] = x[i]/ 27;
+        }
+        y.push(x[i]);
+      }
+    }
+    for (k=0; k< y.length; k++) {
+      z.push(anum[y[k]] || ' ')
+    }
+    z = z.join("");
+    return z;
+}
 
 app.logic = function(req, res) {
   req.session.numeric = req.body.numeric;
