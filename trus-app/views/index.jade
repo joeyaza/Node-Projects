@@ -2,10 +2,15 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p Welcome to the #{title} Numericode Decoder
+  p To Use the Decoder
+  ul
+    li Type your number into the input box. Remember 28, or a non multiple of 27 will give you a space.
+    li Press submit and it will show you decoded message
   form(method="post", action="/", enttype="multipart/form-data")
-    label GO AHEAD
+    label ENJOY!
     input.form-control(name="numeric", type="text", value=sesh )
     input.btn.btn-default(name='submit', type='submit', value='Submit')
   h2=error
-  h1= output
+  br
+  h1=output

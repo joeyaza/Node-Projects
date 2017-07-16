@@ -29,12 +29,13 @@ app.get('/', function(req, res, next) {
 	res.render('index', { title: 'Trussle' });
 });
 
-app.testLogic = function(inp) {
-    const anum={
+app.anum = {
     1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'e', 6: 'f', 7: 'g', 8: 'h',
     9: 'i', 10: 'j', 11: 'k', 
     12: 'l', 13: 'm', 14: 'n',15: 'o', 16: 'p', 17: 'q', 18: 'r', 19: 's', 20: 't', 
     21: 'u', 22: 'v', 23: 'w', 24: 'x', 25: 'y', 26: 'z'}
+
+app.testLogic = function(inp) {
     let y = [];
     let z = [];
     var x = inp.split(' ').map(Number);
@@ -49,7 +50,7 @@ app.testLogic = function(inp) {
       }
     }
     for (k=0; k< y.length; k++) {
-      z.push(anum[y[k]] || ' ')
+      z.push(app.anum[y[k]] || ' ')
     }
     z = z.join("");
     return z;
@@ -57,25 +58,21 @@ app.testLogic = function(inp) {
 
 app.logic = function(req, res) {
   req.session.numeric = req.body.numeric;
-  var v = req.body.numeric;  
+  var initial = req.body.numeric; 
+  console.log(typeof initial) 
   var hasNumber = /\d/;
-  if (!v) {
-    z = "Please type something ! Remember, got to be a number or space, above 28 for a wordspace.";
+  if (!initial) {
+    z = "Please type something ! Remember, it has to be a number or space, use 28 for a wordspace.";
     sesh = req.body.numeric;
     res.render('index', { output: z, sesh:req.body.numeric });
   }
-  if (!hasNumber.test(v)) {
+  if (/[a-zA-Z,.?;:'"&^()^%$£@!`~|<>+=']/.test(initial)) {
     z = "Sorry, please only use numbers and spaces";
     res.render('index', { output: z, sesh:req.body.numeric });
   } else {
-  const anum={
-    1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'e', 6: 'f', 7: 'g', 8: 'h',
-    9: 'i', 10: 'j', 11: 'k', 
-    12: 'l', 13: 'm', 14: 'n',15: 'o', 16: 'p', 17: 'q', 18: 'r', 19: 's', 20: 't', 
-    21: 'u', 22: 'v', 23: 'w', 24: 'x', 25: 'y', 26: 'z'}
     let y = [];
     let z = [];
-    var x = v.split(' ').map(Number);
+    var x = initial.split(' ').map(Number);
     for (i = 0; i < x.length; i++) {
       if (x[i] < 26) {
         y.push(x[i]);
@@ -87,11 +84,15 @@ app.logic = function(req, res) {
       }
     }
     for (k=0; k< y.length; k++) {
-      z.push(anum[y[k]] || ' ')
+      z.push(app.anum[y[k]] || ' ')
     }
     z = z.join("");
-    res.render('index', { title: 'TRUS', output: z, sesh:req.body.numeric});
+    res.render('index', { title: 'Trussle', output: z, sesh:req.body.numeric});
   } 
+}
+
+app.clear = function(res) {
+  res.render('index', { output: '', sesh:''});
 }
 
 /* POST home page. */
@@ -117,4 +118,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.listen(4000);
+
 module.exports = app;
+

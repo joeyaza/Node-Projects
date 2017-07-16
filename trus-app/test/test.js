@@ -1,4 +1,4 @@
-var assert = require("assert"); // node.js core module
+var assert = require("assert");
 var app = require("../app.js");
 
 describe('Displays Number as Text', function() {
@@ -22,5 +22,4 @@ describe('Displays Number as Text', function() {
        assert.equal(z, "hello world");
        done();
     });
-
   });
