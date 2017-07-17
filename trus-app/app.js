@@ -24,9 +24,9 @@ app.use(session({secret:'SECRET27265378TOKEN'}));
 /* GET home page. */
 app.get('/', function(req, res, next) {
 	if (req.session.numeric) {
-  res.render('index', { title: 'Trussle', sesh: req.session.numeric  });
+  res.render('index', { title: 'DECODER', sesh: req.session.numeric  });
 } else 
-	res.render('index', { title: 'Trussle' });
+	res.render('index', { title: 'DECODER' });
 });
 
 app.anum = {
@@ -87,7 +87,7 @@ app.logic = function(req, res) {
       z.push(app.anum[y[k]] || ' ')
     }
     z = z.join("");
-    res.render('index', { title: 'Trussle', output: z, sesh:req.body.numeric});
+    res.render('index', { title: 'DECODER', output: z, sesh:req.body.numeric});
   } 
 }
 
