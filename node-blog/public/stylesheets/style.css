@@ -91,15 +91,19 @@ input[type='text'], select, textarea {
 	height: 20px;
 	width: 200px;
 	border: 1px #ccc solid;
+	margin-bottom: 20px;
 }
 
 select {
 	height: 28px;
+	margin-bottom: 20px;
 }
 
 textarea {
 	height: 70px;
 	width: 400px;
+	margin-bottom: 20px;
+	
 }
 
 
